@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart_admin_dashboard/models/Client.dart';
+// import 'package:smart_admin_dashboard/models/Client.dart';
 
 import '../../../core/constants/color_constants.dart';
+import '../../../models/Client.dart';
 
 class CustomerList extends StatelessWidget {
   // const ClientList({super.key});
