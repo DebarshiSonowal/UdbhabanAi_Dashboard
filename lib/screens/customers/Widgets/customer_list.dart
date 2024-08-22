@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -7,7 +8,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 // import 'package:smart_admin_dashboard/models/Client.dart';
 
 import '../../../core/constants/color_constants.dart';
-import '../../../models/Client.dart';
+// import '../../../models/Client.dart';
 
 class CustomerList extends StatelessWidget {
   // const ClientList({super.key});
@@ -126,3 +127,50 @@ DataRow recentUserDataRow(Client userInfo, BuildContext context) {
     ],
   );
 }
+
+class Client {
+  int? clientId, leadId;
+  String? name, email, phone, company, industry;
+
+  Client(this.clientId, this.leadId, this.name, this.email, this.phone,
+      this.company, this.industry);
+}
+
+List<Client> clientList = [
+  Client(
+    Random().nextInt(10000),
+    Random().nextInt(10000),
+    Faker.instance.name.fullName(),
+    "qwerty@gmail.com",
+    "9678676752",
+    Faker.instance.company.companyName(),
+    "",
+  ),
+  Client(
+    Random().nextInt(10000),
+    Random().nextInt(10000),
+    Faker.instance.name.fullName(),
+    "qwerty@gmail.com",
+    "9678676752",
+    Faker.instance.company.companyName(),
+    "",
+  ),
+  Client(
+    Random().nextInt(10000),
+    Random().nextInt(10000),
+    Faker.instance.name.fullName(),
+    "qwerty@gmail.com",
+    "9678676752",
+    Faker.instance.company.companyName(),
+    "",
+  ),
+  Client(
+    Random().nextInt(10000),
+    Random().nextInt(10000),
+    Faker.instance.name.fullName(),
+    "qwerty@gmail.com",
+    "9678676752",
+    Faker.instance.company.companyName(),
+    "",
+  ),
+];
