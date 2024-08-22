@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:smart_admin_dashboard/models/daily_info_model.dart';
 
@@ -41,6 +42,10 @@ class MiniInformation extends StatelessWidget {
               icon: Icon(Icons.add),
               label: Text(
                 "Add New",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(color: Colors.white70,fontSize: 8.sp,),
               ),
             ),
           ],

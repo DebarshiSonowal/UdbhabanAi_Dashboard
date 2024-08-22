@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 
@@ -31,15 +32,22 @@ class InputWidget extends StatelessWidget {
     this.kController,
     this.kInitialValue,
   });
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(this.topLabel!),
+        Text(
+          this.topLabel!,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: greenColor,
+                fontSize: 9.sp,
+              ),
+        ),
         SizedBox(height: 4.0),
         Container(
-          height: 50,
+          // height: 50,
           decoration: BoxDecoration(
             color: secondaryColor,
             //color: Theme.of(context).buttonColor,
@@ -55,36 +63,41 @@ class InputWidget extends StatelessWidget {
             validator: this.validator,
             obscureText: this.obscureText!,
             decoration: InputDecoration(
-                prefixIcon: this.prefixIcon,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(74, 77, 84, 0.2),
-                  ),
+              prefixIcon: this.prefixIcon,
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Color.fromRGBO(74, 77, 84, 0.2),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  //gapPadding: 16,
-                  borderSide: BorderSide(
-                    color: Theme.of(context).primaryColor,
-                  ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                //gapPadding: 16,
+                borderSide: BorderSide(
+                  color: Theme.of(context).primaryColor,
                 ),
-                errorStyle: TextStyle(height: 0, color: Colors.transparent),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).errorColor,
-                  ),
+              ),
+              errorStyle: TextStyle(height: 0, color: Colors.transparent),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).disabledColor,
                 ),
-                focusedErrorBorder: OutlineInputBorder(
-                  //gapPaddings: 16,
-                  borderSide: BorderSide(
-                    color: Theme.of(context).errorColor,
-                  ),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                //gapPaddings: 16,
+                borderSide: BorderSide(
+                  color: Theme.of(context).disabledColor,
                 ),
-                hintText: this.hintText,
-                hintStyle: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white54),
-                errorText: this.errorText),
+              ),
+              hintText: this.hintText,
+              hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: Colors.white54,
+                fontSize: 8.sp,
+                  ),
+              errorText: this.errorText,
+            ),
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              // color: greenColor,
+              fontSize: 10.sp,
+            ),
           ),
         )
       ],

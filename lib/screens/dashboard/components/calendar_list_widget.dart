@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/models/data.dart';
 import 'package:smart_admin_dashboard/core/widgets/wrapper.dart';
 import 'package:smart_admin_dashboard/screens/dashboard/components/list_calendar_data.dart';
@@ -20,10 +21,10 @@ class CalendartList extends StatelessWidget {
 class _Empty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
-        'There are no interviews.',
-        style: TextStyle(fontSize: 14),
+        'There are no appointments.',
+        style: TextStyle(fontSize: 8.sp,),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/models/slider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -20,6 +21,7 @@ class _SliderWidgetState extends State<SliderWidget> {
   int? totalIndex;
   final controller = PageController();
   final ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -97,20 +99,39 @@ class _SliderWidgetState extends State<SliderWidget> {
                         Image.asset(slides[index].productImage!),
                         Container(
                           alignment: Alignment.center,
-                          child: Text(slides[index].text!,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.headline5),
+                          child: Text(
+                            slides[index].text!,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(
+                                  fontSize: 12.sp,
+                                ),
+                          ),
                         ),
                         Container(
                           alignment: Alignment.center,
-                          child: Text(slides[index].altText!,
-                              style: Theme.of(context).textTheme.headline5),
+                          child: Text(
+                            slides[index].altText!,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(
+                                  fontSize: 9.sp,
+                                ),
+                          ),
                         ),
                         SizedBox(height: 12),
                         Container(
                           alignment: Alignment.center,
-                          child: Text(slides[index].bAltText!,
-                              style: Theme.of(context).textTheme.bodyText1),
+                          child: Text(
+                            slides[index].bAltText!,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      fontSize: 9.sp,
+                                    ),
+                          ),
                         ),
                       ],
                     ),

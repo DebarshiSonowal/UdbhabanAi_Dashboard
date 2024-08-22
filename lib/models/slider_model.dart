@@ -37,7 +37,7 @@ var slideData = [
   {
     "image": "assets/slides/background-1.jpeg",
     "kBackgroundColor": 0xFF2c614f,
-    "text": "Welcome to the Smart Smart Admin Dashboard!",
+    "text": "Welcome to the Udbhaban SalesLens!",
     "altText": "You can access & track your services in real-time.",
     "bAltText": "Are you ready for the next generation AI supported Dashboard?",
     "productImage": "assets/images/mockup.png"

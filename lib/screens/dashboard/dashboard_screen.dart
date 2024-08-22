@@ -9,15 +9,15 @@ import 'package:smart_admin_dashboard/screens/dashboard/components/user_details_
 import 'package:flutter/material.dart';
 
 import 'components/header.dart';
+import 'components/stage_pipes.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        //padding: EdgeInsets.all(defaultPadding),
-        child: Container(
-          padding: EdgeInsets.all(defaultPadding),
+      child: Container(
+        padding: EdgeInsets.all(defaultPadding),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               Header(),
@@ -36,6 +36,8 @@ class DashboardScreen extends StatelessWidget {
                         RecentUsers(),
                         SizedBox(height: defaultPadding),
                         RecentDiscussions(),
+                        SizedBox(height: defaultPadding),
+                        StagePipes(),
                         if (Responsive.isMobile(context))
                           SizedBox(height: defaultPadding),
                         if (Responsive.isMobile(context)) UserDetailsWidget(),

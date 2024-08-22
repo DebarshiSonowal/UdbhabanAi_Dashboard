@@ -58,9 +58,9 @@ List<DailyInfoModel> dailyDatas =
 
 var dailyData = [
   {
-    "title": "Employee",
+    "title": "Sales Generated",
     "volumeData": 1328,
-    "icon": FlutterIcons.user_alt_faw5s,
+    "icon": FlutterIcons.salesforce_mco,
     "totalStorage": "+ %20",
     "color": primaryColor,
     "percentage": 35,
@@ -104,9 +104,9 @@ var dailyData = [
     ]
   },
   {
-    "title": "On Leave",
+    "title": "Total Revenue",
     "volumeData": 1328,
-    "icon": FlutterIcons.message1_ant,
+    "icon": FlutterIcons.cash_usd_mco,
     "totalStorage": "+ %5",
     "color": Color(0xFFFFA113),
     "percentage": 35,
@@ -147,9 +147,9 @@ var dailyData = [
     ]
   },
   {
-    "title": "Onboarding",
+    "title": "Target Achieved",
     "volumeData": 1328,
-    "icon": FlutterIcons.comment_alt_faw5s,
+    "icon": FlutterIcons.target_account_mco,
     "totalStorage": "+ %8",
     "color": Color(0xFFA4CDFF),
     "percentage": 10,
@@ -190,9 +190,9 @@ var dailyData = [
     ]
   },
   {
-    "title": "Open Position",
+    "title": "Performance",
     "volumeData": 1328,
-    "icon": FlutterIcons.heart_faw5s,
+    "icon": FlutterIcons.graph_sli,
     "totalStorage": "+ %8",
     "color": Color(0xFFd50000),
     "percentage": 10,
@@ -233,9 +233,9 @@ var dailyData = [
     ]
   },
   {
-    "title": "Efficiency",
+    "title": "Rating",
     "volumeData": 5328,
-    "icon": FlutterIcons.bell_faw5s,
+    "icon": FlutterIcons.rate_review_mdi,
     "totalStorage": "- %5",
     "color": Color(0xFF00F260),
     "percentage": 78,

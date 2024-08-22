@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 enum ButtonType { PRIMARY, PLAIN }
 
@@ -29,11 +30,13 @@ class AppButton extends StatelessWidget {
           ],
         ),
         child: Center(
-          child: Text(this.text!,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1!
-                  .copyWith(color: getTextColor(context, type!))),
+          child: Text(
+            this.text!,
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: getTextColor(context, type!),
+                  fontSize: 9.sp,
+                ),
+          ),
         ),
       ),
     );
@@ -43,7 +46,7 @@ class AppButton extends StatelessWidget {
 Color getButtonColor(context, ButtonType type) {
   switch (type) {
     case ButtonType.PRIMARY:
-      return Theme.of(context).buttonColor;
+      return Theme.of(context).secondaryHeaderColor;
     case ButtonType.PLAIN:
       return Colors.white;
     default:
@@ -58,6 +61,6 @@ Color getTextColor(context, ButtonType type) {
     case ButtonType.PRIMARY:
       return Colors.white;
     default:
-      return Theme.of(context).buttonColor;
+      return Theme.of(context).secondaryHeaderColor;
   }
 }

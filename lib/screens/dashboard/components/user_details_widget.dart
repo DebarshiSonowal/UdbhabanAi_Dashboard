@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:smart_admin_dashboard/screens/dashboard/components/calendart_widget.dart';
 import 'package:smart_admin_dashboard/screens/dashboard/components/charts.dart';
@@ -22,35 +23,35 @@ class UserDetailsWidget extends StatelessWidget {
         children: [
           CalendarWidget(),
           Text(
-            "Employment Details",
+            "Lead Source",
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 9.sp,
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: defaultPadding),
+          SizedBox(height:2.h),
           Chart(),
           UserDetailsMiniCard(
             color: Color(0xff0293ee),
-            title: "Technical Interview",
+            title: "Call",
             amountOfFiles: "%28.3",
             numberOfIncrease: 1328,
           ),
           UserDetailsMiniCard(
             color: Color(0xfff8b250),
-            title: "HR Interview",
+            title: "Email",
             amountOfFiles: "%16.7",
             numberOfIncrease: 1328,
           ),
           UserDetailsMiniCard(
             color: Color(0xff845bef),
-            title: "Final Interview",
+            title: "In Person",
             amountOfFiles: "%22.4",
             numberOfIncrease: 1328,
           ),
           UserDetailsMiniCard(
             color: Color(0xff13d38e),
-            title: "Rejected",
+            title: "Website",
             amountOfFiles: "%2.3",
             numberOfIncrease: 140,
           ),

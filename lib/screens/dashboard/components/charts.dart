@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 
 import 'package:fl_chart/fl_chart.dart';
@@ -23,8 +24,8 @@ class _ChartState extends State<Chart> {
         aspectRatio: 1.3,
         child: Row(
           children: <Widget>[
-            const SizedBox(
-              height: 18,
+            SizedBox(
+              height: 3.h,
             ),
             Expanded(
               child: AspectRatio(
@@ -32,13 +33,13 @@ class _ChartState extends State<Chart> {
                 child: PieChart(
                   PieChartData(
                       pieTouchData:
-                          PieTouchData(touchCallback: (pieTouchResponse) {
+                          PieTouchData(touchCallback: (touchEvent,pieTouchResponse) {
                         setState(() {
-                          final desiredTouch = pieTouchResponse.touchInput
+                          final desiredTouch = touchEvent
                                   is! PointerExitEvent &&
-                              pieTouchResponse.touchInput is! PointerUpEvent;
+                              touchEvent is! PointerUpEvent;
                           if (desiredTouch &&
-                              pieTouchResponse.touchedSection != null) {
+                              pieTouchResponse!.touchedSection != null) {
                             touchedIndex = pieTouchResponse
                                 .touchedSection!.touchedSectionIndex;
                           } else {
@@ -67,7 +68,7 @@ class _ChartState extends State<Chart> {
   List<PieChartSectionData> showingSections() {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 25.0 : 16.0;
+      final fontSize = isTouched ? 10.sp : 8.sp;
       final radius = isTouched ? 60.0 : 50.0;
       switch (i) {
         case 0:

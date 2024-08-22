@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:smart_admin_dashboard/core/utils/colorful_tag.dart';
 import 'package:smart_admin_dashboard/models/recent_user_model.dart';
@@ -20,29 +23,36 @@ class RecentDiscussions extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Recent Open Positions",
-            style: Theme.of(context).textTheme.subtitle1,
+            "Suggested Leads",
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontSize: 9.sp,
+            ),
           ),
           SizedBox(
             width: double.infinity,
             child: DataTable(
               horizontalMargin: 0,
+              dataTextStyle:
+              Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontSize: 7.sp,
+              ),
+              headingTextStyle:
+              Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontSize: 8.sp,
+              ),
               columnSpacing: defaultPadding,
               columns: [
                 DataColumn(
-                  label: Text("Position Name"),
+                  label: Text("Name"),
                 ),
                 DataColumn(
-                  label: Text("Create Date"),
+                  label: Text("Probability"),
                 ),
                 DataColumn(
-                  label: Text("Total Application"),
+                  label: Text("Expected Revenue"),
                 ),
               ],
-              rows: List.generate(
-                recentUsers.length,
-                (index) => recentUserDataRow(recentUsers[index]),
-              ),
+              rows: suggestedLead.map((lead) => recentUserDataRow(lead)).toList(),
             ),
           ),
         ],
@@ -51,20 +61,20 @@ class RecentDiscussions extends StatelessWidget {
   }
 }
 
-DataRow recentUserDataRow(RecentUser userInfo) {
+DataRow recentUserDataRow(Lead userInfo) {
   return DataRow(
     cells: [
       DataCell(Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
-            color: getRoleColor(userInfo.role).withOpacity(.2),
-            border: Border.all(color: getRoleColor(userInfo.role)),
+            color: getRoleColor(userInfo.company).withOpacity(.2),
+            border: Border.all(color: getRoleColor(userInfo.company)),
             borderRadius: BorderRadius.all(Radius.circular(5.0) //
                 ),
           ),
-          child: Text(userInfo.role!))),
-      DataCell(Text(userInfo.date!)),
-      DataCell(Text(userInfo.posts!)),
+          child: Text(userInfo.company!))),
+      DataCell(Text("${Random.secure().nextInt(100)}%")),
+      DataCell(Text("\$${userInfo.budget!}")),
     ],
   );
 }

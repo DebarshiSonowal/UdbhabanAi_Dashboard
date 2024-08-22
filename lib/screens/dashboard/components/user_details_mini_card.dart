@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 
@@ -43,19 +44,26 @@ class UserDetailsMiniCard extends StatelessWidget {
                     title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Colors.white,
+                          fontSize: 8.sp,
+                        ),
                   ),
                   Text(
                     "$numberOfIncrease",
                     style: Theme.of(context)
                         .textTheme
-                        .caption!
-                        .copyWith(color: Colors.white70),
+                        .bodySmall!
+                        .copyWith(color: Colors.white70,fontSize: 9.sp,),
                   ),
                 ],
               ),
             ),
           ),
-          Text(amountOfFiles)
+          Text(amountOfFiles,style: Theme.of(context)
+              .textTheme
+              .bodySmall!
+              .copyWith(color: Colors.white,fontSize: 9.sp,),)
         ],
       ),
     );

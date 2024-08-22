@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 
 import 'package:smart_admin_dashboard/core/utils/colorful_tag.dart';
@@ -23,18 +24,28 @@ class RecentUsers extends StatelessWidget {
         children: [
           Text(
             "Recent Users",
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontSize: 9.sp,
+                ),
           ),
           SingleChildScrollView(
             //scrollDirection: Axis.horizontal,
             child: SizedBox(
               width: double.infinity,
               child: DataTable(
+                headingTextStyle:
+                    Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 8.5.sp,
+                        ),
+                dataTextStyle:
+                    Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 7.5.sp,
+                        ),
                 horizontalMargin: 0,
                 columnSpacing: defaultPadding,
                 columns: [
                   DataColumn(
-                    label: Text("Name Surname"),
+                    label: Text("Name"),
                   ),
                   DataColumn(
                     label: Text("Role"),
@@ -52,10 +63,9 @@ class RecentUsers extends StatelessWidget {
                     label: Text("Operation"),
                   ),
                 ],
-                rows: List.generate(
-                  recentUsers.length,
-                  (index) => recentUserDataRow(recentUsers[index], context),
-                ),
+                rows: recentLead
+                    .map((lead) => recentUserDataRow(lead, context))
+                    .toList(),
               ),
             ),
           ),
@@ -65,17 +75,17 @@ class RecentUsers extends StatelessWidget {
   }
 }
 
-DataRow recentUserDataRow(RecentUser userInfo, BuildContext context) {
+DataRow recentUserDataRow(Lead userInfo, BuildContext context) {
   return DataRow(
     cells: [
       DataCell(
         Row(
           children: [
             TextAvatar(
-              size: 35,
+              size: 35.sp,
               backgroundColor: Colors.white,
               textColor: Colors.white,
-              fontSize: 14,
+              fontSize: 8.sp,
               upperCase: true,
               numberLetters: 1,
               shape: Shape.Rectangle,
@@ -93,55 +103,77 @@ DataRow recentUserDataRow(RecentUser userInfo, BuildContext context) {
         ),
       ),
       DataCell(Container(
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.all(2),
           decoration: BoxDecoration(
-            color: getRoleColor(userInfo.role).withOpacity(.2),
-            border: Border.all(color: getRoleColor(userInfo.role)),
+            color: getRoleColor(userInfo.company).withOpacity(.2),
+            border: Border.all(color: getRoleColor(userInfo.company)),
             borderRadius: BorderRadius.all(Radius.circular(5.0) //
                 ),
           ),
-          child: Text(userInfo.role!))),
+          child: Text(userInfo.company!))),
       DataCell(Text(userInfo.email!)),
       DataCell(Text(userInfo.date!)),
-      DataCell(Text(userInfo.posts!)),
+      DataCell(Text(userInfo.budget!)),
       DataCell(
         Row(
           children: [
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue.withOpacity(0.5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                backgroundColor: Colors.blue.withOpacity(0.5),
               ),
               icon: Icon(
                 Icons.edit,
-                size: 14,
+                size: 10.sp,
               ),
               onPressed: () {},
               // Edit
-              label: Text("Edit"),
+              label: Text(
+                "Edit",
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontSize: 7.sp,
+                    ),
+              ),
             ),
             SizedBox(
               width: 6,
             ),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: Colors.green.withOpacity(0.5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                backgroundColor: Colors.green.withOpacity(0.5),
               ),
               icon: Icon(
                 Icons.visibility,
-                size: 14,
+                size: 10.sp,
               ),
               onPressed: () {},
               //View
-              label: Text("View"),
+              label: Text(
+                "View",
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontSize: 7.sp,
+                    ),
+              ),
             ),
             SizedBox(
               width: 6,
             ),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: Colors.red.withOpacity(0.5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                backgroundColor: Colors.red.withOpacity(0.5),
               ),
-              icon: Icon(Icons.delete),
+              icon: Icon(
+                Icons.delete,
+                size: 10.sp,
+              ),
               onPressed: () {
                 showDialog(
                     context: context,
@@ -169,7 +201,7 @@ DataRow recentUserDataRow(RecentUser userInfo, BuildContext context) {
                                           size: 14,
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                            primary: Colors.grey),
+                                            backgroundColor: Colors.grey),
                                         onPressed: () {
                                           Navigator.of(context).pop();
                                         },
@@ -183,7 +215,7 @@ DataRow recentUserDataRow(RecentUser userInfo, BuildContext context) {
                                           size: 14,
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                            primary: Colors.red),
+                                            backgroundColor: Colors.red),
                                         onPressed: () {},
                                         label: Text("Delete"))
                                   ],
@@ -194,7 +226,12 @@ DataRow recentUserDataRow(RecentUser userInfo, BuildContext context) {
                     });
               },
               // Delete
-              label: Text("Delete"),
+              label: Text(
+                "Delete",
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontSize: 7.sp,
+                    ),
+              ),
             ),
           ],
         ),

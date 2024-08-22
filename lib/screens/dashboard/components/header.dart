@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:smart_admin_dashboard/responsive.dart';
 import 'package:flutter/material.dart';
@@ -24,20 +25,24 @@ class Header extends StatelessWidget {
             children: [
               Text(
                 "Hello, Deniz 👋",
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontSize: 9.sp,
+                    ),
               ),
               SizedBox(
                 height: 8,
               ),
               Text(
-                "Wellcome to your dashboard",
-                style: Theme.of(context).textTheme.subtitle2,
+                "Welcome to your dashboard",
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      fontSize: 9.sp,
+                    ),
               ),
             ],
           ),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-        Expanded(child: SearchField()),
+        SearchField(),
         ProfileCard()
       ],
     );
@@ -71,7 +76,13 @@ class ProfileCard extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              child: Text("Deniz Çolak"),
+              child: Text(
+                "Deniz Çolak",
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: Colors.white70,
+                      fontSize: 8.sp,
+                    ),
+              ),
             ),
           Icon(Icons.keyboard_arrow_down),
         ],
@@ -87,28 +98,39 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: "Search",
-        fillColor: secondaryColor,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-        ),
-        suffixIcon: InkWell(
-          onTap: () {},
-          child: Container(
-            padding: EdgeInsets.all(defaultPadding * 0.75),
-            margin: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-            decoration: BoxDecoration(
-              color: greenColor,
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-            ),
-            child: SvgPicture.asset(
-              "assets/icons/Search.svg",
+    return SizedBox(
+      width:12.w,
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: "Search",
+          hintStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+            fontSize: 7.sp,
+            color: Colors.white70,
+          ),
+          fillColor: secondaryColor,
+          filled: true,
+          border: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+          ),
+          suffixIcon: InkWell(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(defaultPadding * 0.75),
+              margin: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              decoration: BoxDecoration(
+                color: greenColor,
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+              ),
+              child: SvgPicture.asset(
+                "assets/icons/Search.svg",
+              ),
             ),
           ),
+        ),
+        style:  Theme.of(context).textTheme.bodySmall?.copyWith(
+          fontSize: 8.sp,
+          color: Colors.white,
         ),
       ),
     );

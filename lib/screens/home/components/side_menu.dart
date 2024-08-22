@@ -1,11 +1,21 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SideMenu extends StatelessWidget {
+class SideMenu extends StatefulWidget {
   const SideMenu({
     Key? key,
+    required this.controller,
   }) : super(key: key);
+  final PageController controller;
+
+
+  @override
+  State<SideMenu> createState() => _SideMenuState();
+}
+
+class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
@@ -22,54 +32,102 @@ class SideMenu extends StatelessWidget {
                   height: defaultPadding * 3,
                 ),
                 Image.asset(
-                  "assets/logo/logo_icon.png",
-                  scale: 5,
+                  "assets/images/logo.png",
+                  scale: 24,
                 ),
                 SizedBox(
                   height: defaultPadding,
                 ),
-                Text("Smart HR - Application")
+                Text(
+                  "Udbhaban SalesLens",
+                  style: TextStyle(
+                    fontSize: 9.sp,
+                  ),
+                )
               ],
             )),
             DrawerListTile(
               title: "Dashboard",
               svgSrc: "assets/icons/menu_dashbord.svg",
-              press: () {},
+              press: () {
+
+                setState(() {
+                  widget.controller.jumpToPage(0);
+                });
+              },
+              isSelected: widget.controller.page?.toInt() == 0,
             ),
             DrawerListTile(
-              title: "Posts",
-              svgSrc: "assets/icons/menu_tran.svg",
-              press: () {},
+              title: "Leads",
+              svgSrc: "assets/icons/filter.svg",
+              press: () {
+                setState(() {
+                  widget.controller.jumpToPage(1);
+                });
+              },
+              isSelected: widget.controller.page?.toInt() == 1,
             ),
             DrawerListTile(
-              title: "Pages",
-              svgSrc: "assets/icons/menu_task.svg",
-              press: () {},
+              title: "Customers",
+              svgSrc: "assets/icons/customer_service.svg",
+              press: () {
+                setState(() {
+                  widget.controller.jumpToPage(2);
+
+                });
+              },
+              isSelected: widget.controller.page?.toInt() == 2,
             ),
             DrawerListTile(
-              title: "Categories",
-              svgSrc: "assets/icons/menu_doc.svg",
-              press: () {},
+              title: "Analytics",
+
+              svgSrc: "assets/icons/analytics.svg",
+              press: () {
+                setState(() {
+                  widget.controller.jumpToPage(3);
+                });
+              },
+              isSelected: widget.controller.page?.toInt() == 3,
             ),
             DrawerListTile(
-              title: "Appearance",
-              svgSrc: "assets/icons/menu_store.svg",
-              press: () {},
+              title: "Communication",
+              svgSrc: "assets/icons/messaging.svg",
+              press: () {
+               setState(() {
+                 widget.controller.jumpToPage(4);
+               });
+              },
+              isSelected: widget.controller.page?.toInt() == 4,
             ),
             DrawerListTile(
-              title: "Users",
-              svgSrc: "assets/icons/menu_notification.svg",
-              press: () {},
-            ),
-            DrawerListTile(
-              title: "Tools",
+              title: "Account",
               svgSrc: "assets/icons/menu_profile.svg",
-              press: () {},
+              press: () {
+                setState(() {
+                  widget.controller.jumpToPage(5);
+                });
+              },
+              isSelected: widget.controller.page?.toInt() == 5,
+            ),
+            DrawerListTile(
+              title: "Grievance Redressal",
+              svgSrc: "assets/icons/complaint.svg",
+              press: () {
+                setState(() {
+                  widget.controller.jumpToPage(6);
+                });
+              },
+              isSelected: widget.controller.page?.toInt() == 6,
             ),
             DrawerListTile(
               title: "Settings",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () {},
+              press: () {
+                setState(() {
+                  widget.controller.jumpToPage(7);
+                });
+              },
+              isSelected: widget.controller.page?.toInt() == 7,
             ),
           ],
         ),
@@ -85,10 +143,12 @@ class DrawerListTile extends StatelessWidget {
     required this.title,
     required this.svgSrc,
     required this.press,
+    required this.isSelected,
   }) : super(key: key);
 
   final String title, svgSrc;
   final VoidCallback press;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -97,12 +157,12 @@ class DrawerListTile extends StatelessWidget {
       horizontalTitleGap: 0.0,
       leading: SvgPicture.asset(
         svgSrc,
-        color: Colors.white54,
+        color: isSelected ? Colors.white : Colors.white12,
         height: 16,
       ),
       title: Text(
         title,
-        style: TextStyle(color: Colors.white54),
+        style: TextStyle(color: isSelected ? Colors.white : Colors.white12, fontSize: 8.sp),
       ),
     );
   }

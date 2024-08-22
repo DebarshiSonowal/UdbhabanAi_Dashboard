@@ -1,3 +1,4 @@
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smart_admin_dashboard/core/constants/color_constants.dart';
 import 'package:smart_admin_dashboard/core/models/data.dart';
 import 'package:smart_admin_dashboard/screens/dashboard/components/calendar_list_widget.dart';
@@ -83,7 +84,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 2.h,
           ),
           TableCalendar<CalendarData>(
               selectedDayPredicate: (day) => isSameDay(_focusedDay, day),
@@ -93,18 +94,59 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               headerVisible: false,
               onDaySelected: _onDaySelected,
               onFormatChanged: (result) {},
+              headerStyle: HeaderStyle(
+                titleTextStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 7.sp,
+                    ),
+              ),
               daysOfWeekStyle: DaysOfWeekStyle(
                 dowTextFormatter: (date, locale) {
                   return DateFormat("EEE").format(date).toUpperCase();
                 },
-                weekendStyle: TextStyle(fontWeight: FontWeight.bold),
-                weekdayStyle: TextStyle(fontWeight: FontWeight.bold),
+                // decoration: BoxDecoration(
+                //   color: Colors.white70
+                // ),
+                weekendStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 6.5.sp,
+                ),
+                weekdayStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 6.5.sp,
+                ),
               ),
               onPageChanged: (day) {
                 _focusedDay = day;
                 setState(() {});
               },
               calendarStyle: CalendarStyle(
+                todayTextStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 8.sp,
+                    ),
+                defaultTextStyle: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontSize: 8.sp, color: Colors.white54),
+                selectedTextStyle: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontSize: 8.sp, color: Colors.white70),
+                outsideTextStyle: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontSize: 8.sp, color: Colors.white70),
+                disabledTextStyle: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontSize: 8.sp, color: Colors.white54),
+                weekNumberTextStyle:Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontSize: 8.sp, color: Colors.white70),
+                weekendTextStyle: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontSize: 8.sp, color: Colors.white70),
                 todayDecoration: BoxDecoration(
                   color: greenColor,
                   shape: BoxShape.circle,
@@ -116,9 +158,13 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               ),
               eventLoader: _eventLoader),
           SizedBox(
-            height: 8,
+            height: 4,
           ),
           CalendartList(datas: _selectedDate),
+          SizedBox(
+            height: 4,
+          ),
+          Divider(),
         ],
       ),
     );
